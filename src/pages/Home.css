@@ -1,0 +1,12 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: 50%;
+    width: auto;
+    gap: 5px;
+}
+
+.cell {
+    color: black;
+    background-color: red;
+}
