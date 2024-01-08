@@ -10,3 +10,7 @@
   flex-direction: column;
   align-self: center;
 }
+
+.file:hover .unclaimed {
+  background-color: lightgray;
+}
