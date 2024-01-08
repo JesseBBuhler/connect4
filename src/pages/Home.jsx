@@ -9,11 +9,11 @@ const Home = () => {
 
   return (
     <div className="container">
-      {claimed.map((row, rowIndex) => (
-        <div key={rowIndex} className="file">
-          {row.map((col, colIndex) => (
-            <div key={colIndex} className="rank">
-              <Cell claimed={col}></Cell>
+      {claimed.map((col, colIndex) => (
+        <div key={colIndex} className="file">
+          {col.map((row, rowIndex) => (
+            <div key={rowIndex} className="rank">
+              <Cell claimed={row}></Cell>
             </div>
           ))}
         </div>
