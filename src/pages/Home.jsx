@@ -1,12 +1,12 @@
 import "./Home.css";
 import Cell from "../components/Cell";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
+import ArraySetUp from "../functions/ArraySetUp";
+
 const Home = () => {
-  const numCol = 7;
-  const numRow = 6;
-  const claimed = Array(numCol)
-    .fill()
-    .map(() => Array(numRow).fill("unclaimed"));
+  const [claimed, setClaimed] = useState(ArraySetUp());
+
   return (
     <div className="container">
       {claimed.map((row, rowIndex) => (
