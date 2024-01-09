@@ -13,13 +13,13 @@ const Home = () => {
   const fileSelected = (colIndex) => {
     if (!winner) {
       setClaimed(
-        UpdateClaimed(colIndex, claimed, player, setPlayer, setWinner)
+        UpdateClaimed(colIndex, claimed, player, setPlayer, setWinner, winner)
       );
     }
   };
 
   return (
-    <div className="container">
+    <div className={`container claimedPlayer${player}`}>
       {claimed.map((col, colIndex) => (
         <div
           key={colIndex}

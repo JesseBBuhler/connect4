@@ -1,3 +1,3 @@
-const CheckForWinner = (board, col, row, setWinner, player) => {};
+const CheckForWinner = (board, col, row, player, setWinner) => {};
 
 export default CheckForWinner;
