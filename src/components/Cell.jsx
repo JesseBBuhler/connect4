@@ -4,7 +4,7 @@ const Cell = (props) => {
   return (
     <>
       <div className="frame">
-        <div className={"circle " + props.claimed}>{props.number}</div>
+        <div className={"circle " + props.board}>{props.number}</div>
       </div>
     </>
   );

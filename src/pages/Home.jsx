@@ -2,26 +2,28 @@ import "./Home.css";
 import Cell from "../components/Cell";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import ArraySetUp from "../functions/ArraySetUp";
-import UpdateClaimed from "../functions/UpdateClaimed";
+import GameSetUp from "../functions/GameSetUp";
+import UpdateGame from "../functions/UpdateGame";
 
 const Home = () => {
-  const [claimed, setClaimed] = useState(ArraySetUp());
-  const [player, setPlayer] = useState(1);
-  const [winner, setWinner] = useState(0);
+  const numCol = 7;
+  const numRow = 6;
+  const [game, setGame] = useState(GameSetUp(numCol, numRow));
 
   const fileSelected = (colIndex) => {
-    if (!winner) {
-      setClaimed(
-        UpdateClaimed(colIndex, claimed, player, setPlayer, setWinner, winner)
-      );
+    if (!game.winner) {
+      UpdateGame(colIndex, game, setGame);
     }
   };
 
   return (
-    <div className={`claimedPlayer${winner}`}>
-      <div className={`container claimedPlayer${winner ? winner : player}`}>
-        {claimed.map((col, colIndex) => (
+    <div className={`claimedPlayer${game.winner}`}>
+      <div
+        className={`container claimedPlayer${
+          game.winner ? game.winner : game.player
+        }`}
+      >
+        {game.board.map((col, colIndex) => (
           <div
             key={colIndex}
             onClick={() => fileSelected(colIndex)}
@@ -29,7 +31,7 @@ const Home = () => {
           >
             {col.map((row, rowIndex) => (
               <div key={rowIndex} className="rank">
-                <Cell claimed={row}></Cell>
+                <Cell board={row}></Cell>
               </div>
             ))}
           </div>

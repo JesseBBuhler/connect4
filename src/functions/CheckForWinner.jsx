@@ -1,18 +1,16 @@
-const CheckForWinner = (board, col, row, player) => {
-  const numCol = 7;
-  const numRow = 6;
+const CheckForWinner = (game, col, row) => {
   let numMatches = 0;
-  let matchPhrase = `claimedPlayer${player}`;
+  let matchPhrase = `claimedPlayer${game.player}`;
   let checkRow = row;
   let checkCol = col;
 
-  console.log(`-------Player:${player}`);
+  console.log(`-------Player:${game.player}`);
 
   ///////horizontal
   console.log(`##Horizontal`);
   //check left
   console.log("Check Left");
-  while (checkCol >= 0 && board[checkCol][checkRow] === matchPhrase) {
+  while (checkCol >= 0 && game.board[checkCol][checkRow] === matchPhrase) {
     console.log(`Col: ${checkCol}, Row:${checkRow}`);
     numMatches++;
     checkCol--;
@@ -21,15 +19,18 @@ const CheckForWinner = (board, col, row, player) => {
   //check right
   console.log("Check Right");
   checkCol = col + 1;
-  while (checkCol < numCol && board[checkCol][checkRow] === matchPhrase) {
+  while (
+    checkCol < game.numCol &&
+    game.board[checkCol][checkRow] === matchPhrase
+  ) {
     console.log(`Col: ${checkCol}, Row:${checkRow}`);
     numMatches++;
     checkCol++;
   }
 
   if (numMatches >= 4) {
-    console.log(`Winner: Player${player}`);
-    return player;
+    console.log(`Winner: Player${game.player}`);
+    return game.player;
   }
 
   ////////vertical
@@ -39,7 +40,7 @@ const CheckForWinner = (board, col, row, player) => {
   checkRow = row;
   //check up
   console.log("Check Up");
-  while (checkRow >= 0 && board[checkCol][checkRow] === matchPhrase) {
+  while (checkRow >= 0 && game.board[checkCol][checkRow] === matchPhrase) {
     console.log(`Col: ${checkCol}, Row:${checkRow}`);
     numMatches++;
     checkRow--;
@@ -48,15 +49,18 @@ const CheckForWinner = (board, col, row, player) => {
   //check down
   console.log("Check Down");
   checkRow = row + 1;
-  while (checkRow < numRow && board[checkCol][checkRow] === matchPhrase) {
+  while (
+    checkRow < game.numRow &&
+    game.board[checkCol][checkRow] === matchPhrase
+  ) {
     console.log(`Col: ${checkCol}, Row:${checkRow}`);
     numMatches++;
     checkRow++;
   }
 
   if (numMatches >= 4) {
-    console.log(`Winner: Player${player}`);
-    return player;
+    console.log(`Winner: Player${game.player}`);
+    return game.player;
   }
 
   ////////positive diagonal
@@ -68,8 +72,8 @@ const CheckForWinner = (board, col, row, player) => {
   console.log("Check left and down");
   while (
     checkCol >= 0 &&
-    checkRow < numRow &&
-    board[checkCol][checkRow] === matchPhrase
+    checkRow < game.numRow &&
+    game.board[checkCol][checkRow] === matchPhrase
   ) {
     console.log(`Col: ${checkCol}, Row:${checkRow}`);
     numMatches++;
@@ -83,8 +87,8 @@ const CheckForWinner = (board, col, row, player) => {
   checkRow = row - 1;
   while (
     checkRow >= 0 &&
-    checkCol < numCol &&
-    board[checkCol][checkRow] === matchPhrase
+    checkCol < game.numCol &&
+    game.board[checkCol][checkRow] === matchPhrase
   ) {
     console.log(`Col: ${checkCol}, Row:${checkRow}`);
     numMatches++;
@@ -93,8 +97,8 @@ const CheckForWinner = (board, col, row, player) => {
   }
 
   if (numMatches >= 4) {
-    console.log(`Winner: Player${player}`);
-    return player;
+    console.log(`Winner: Player${game.player}`);
+    return game.player;
   }
 
   ////////negative diagonal
@@ -105,9 +109,9 @@ const CheckForWinner = (board, col, row, player) => {
   //check right and down
   console.log("Check right and down");
   while (
-    checkCol < numCol &&
-    checkRow < numRow &&
-    board[checkCol][checkRow] === matchPhrase
+    checkCol < game.numCol &&
+    checkRow < game.numRow &&
+    game.board[checkCol][checkRow] === matchPhrase
   ) {
     console.log(`Col: ${checkCol}, Row:${checkRow}`);
     numMatches++;
@@ -122,7 +126,7 @@ const CheckForWinner = (board, col, row, player) => {
   while (
     checkRow >= 0 &&
     checkCol >= 0 &&
-    board[checkCol][checkRow] === matchPhrase
+    game.board[checkCol][checkRow] === matchPhrase
   ) {
     console.log(`Col: ${checkCol}, Row:${checkRow}`);
     numMatches++;
@@ -131,14 +135,14 @@ const CheckForWinner = (board, col, row, player) => {
   }
 
   if (numMatches >= 4) {
-    console.log(`Winner: Player${player}`);
-    return player;
+    console.log(`Winner: Player${game.player}`);
+    return game.player;
   }
 
   //check for a tie
 
-  for (let i = 0; i < numCol; i++) {
-    if (board[i][0] === "unclaimed") {
+  for (let i = 0; i < game.numCol; i++) {
+    if (game.board[i][0] === "unclaimed") {
       console.log("keep playing");
       return 0;
     }
