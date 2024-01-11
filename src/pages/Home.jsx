@@ -19,20 +19,22 @@ const Home = () => {
   };
 
   return (
-    <div className={`container claimedPlayer${player}`}>
-      {claimed.map((col, colIndex) => (
-        <div
-          key={colIndex}
-          onClick={() => fileSelected(colIndex)}
-          className="file"
-        >
-          {col.map((row, rowIndex) => (
-            <div key={rowIndex} className="rank">
-              <Cell claimed={row}></Cell>
-            </div>
-          ))}
-        </div>
-      ))}
+    <div className={`claimedPlayer${winner}`}>
+      <div className={`container claimedPlayer${winner ? winner : player}`}>
+        {claimed.map((col, colIndex) => (
+          <div
+            key={colIndex}
+            onClick={() => fileSelected(colIndex)}
+            className="file"
+          >
+            {col.map((row, rowIndex) => (
+              <div key={rowIndex} className="rank">
+                <Cell claimed={row}></Cell>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -10,15 +10,15 @@ const UpdateClaimed = (
 ) => {
   let rank = 5;
 
-  while (claimed[colIndex][rank] != "unclaimed" && rank >= 0) {
+  while (claimed[colIndex][rank] !== "unclaimed" && rank >= 0) {
     rank = rank - 1;
   }
   if (rank >= 0) {
     claimed[colIndex][rank] = "claimedPlayer" + player;
-    CheckForWinner(claimed, colIndex, rank, player, setWinner);
+    setWinner(CheckForWinner(claimed, colIndex, rank, player));
 
     if (!winner) {
-      player == 1 ? setPlayer(2) : setPlayer(1);
+      player === 1 ? setPlayer(2) : setPlayer(1);
     }
   }
   return claimed;
