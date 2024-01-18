@@ -36,7 +36,9 @@ const Home = () => {
           game.winner ? "" : "invisible"
         } claimedPlayer${game.winner}`}
       >
-        <h1>{`Player ${game.winner} Wins!`}</h1>
+        <h1>
+          {game.winner == 4 ? "It's a Tie!" : `Player${game.winner} Wins!`}
+        </h1>
         <h2 className="playAgain" onClick={() => restartGame()}>
           Play Again?
         </h2>
