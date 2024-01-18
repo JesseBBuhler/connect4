@@ -3,7 +3,7 @@
   height: 12vw;
   max-height: 12vh;
   max-width: 12vh;
-  background-color: gray;
+  background-color: var(--primary-bg-color);
 }
 
 .circle {
@@ -16,17 +16,17 @@
 }
 
 .unclaimed {
-  background-color: white;
+  background-color: var(--primary-text-color);
 }
 
 .claimedPlayer1 {
-  background-color: blue;
+  background-color: var(--player-1-color);
 }
 
 .claimedPlayer2 {
-  background-color: red;
+  background-color: var(--player-2-color);
 }
 
 .claimedPlayer4 {
-  background-color: blueviolet;
+  background-color: var(--secondary-bg-color);
 }

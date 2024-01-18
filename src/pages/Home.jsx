@@ -26,35 +26,42 @@ const Home = () => {
   };
 
   return (
-    <div className="connect4">
+    <div
+      className={`background claimedPlayer${
+        game.winner ? game.winner : game.player
+      }`}
+    >
       <div
-        className={`background claimedPlayer${
-          game.winner ? game.winner : game.player
-        }`}
+        className={`congradulations ${
+          game.winner ? "" : "invisible"
+        } claimedPlayer${game.winner}`}
       >
-        <div className={`congradulations ${game.winner ? "" : "invisible"}`}>
-          <h1>{`Player ${game.winner} Wins!`}</h1>
-          <h2 className="playAgain" onClick={() => restartGame()}>
-            Play Again?
-          </h2>
-        </div>
-        <div className={`container`}>
-          {game.board.map((col, colIndex) => (
-            <div
-              key={colIndex}
-              onClick={() => fileSelected(colIndex)}
-              className="file"
-            >
-              {col.map((row, rowIndex) => (
-                <div key={rowIndex} className="rank">
-                  <Cell board={row}></Cell>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
+        <h1>{`Player ${game.winner} Wins!`}</h1>
+        <h2 className="playAgain" onClick={() => restartGame()}>
+          Play Again?
+        </h2>
+      </div>
+      <div className="game">
         <div className="undoButton" onClick={() => undoMove()}>
-          Undo
+          <h4>Undo</h4>
+        </div>
+
+        <div className="gameTable">
+          <div className="gameBoard">
+            {game.board.map((col, colIndex) => (
+              <div
+                key={colIndex}
+                onClick={() => fileSelected(colIndex)}
+                className="file"
+              >
+                {col.map((row, rowIndex) => (
+                  <div key={rowIndex} className="rank">
+                    <Cell board={row}></Cell>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
