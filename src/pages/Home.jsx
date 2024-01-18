@@ -27,11 +27,6 @@ const Home = () => {
 
   return (
     <div className="connect4">
-      <div className="menuBar">
-        <div className="undoButton" onClick={() => undoMove()}>
-          Undo
-        </div>
-      </div>
       <div
         className={`background claimedPlayer${
           game.winner ? game.winner : game.player
@@ -57,6 +52,9 @@ const Home = () => {
               ))}
             </div>
           ))}
+        </div>
+        <div className="undoButton" onClick={() => undoMove()}>
+          Undo
         </div>
       </div>
     </div>

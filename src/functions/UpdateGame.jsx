@@ -17,6 +17,7 @@ const UpdateGame = (col, game, setGame) => {
       ...prevGame,
       winner: winner,
       board: updatedGame.board,
+      canUndo: winner ? false : true,
     }));
 
     if (!game.winner) {

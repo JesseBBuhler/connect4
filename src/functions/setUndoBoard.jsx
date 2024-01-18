@@ -4,7 +4,6 @@ const setUndoBoard = (game, setGame, mode) => {
     .map(() => Array(game.numRow));
 
   if (mode === "do") {
-    console.log("do");
     for (let i = 0; i < game.numCol; i++) {
       for (let j = 0; j < game.numRow; j++) {
         newBoard[i][j] = game.board[i][j];
@@ -14,8 +13,7 @@ const setUndoBoard = (game, setGame, mode) => {
       ...prevGame,
       undoBoard: newBoard,
     }));
-  } else if (mode === "undo") {
-    console.log("undo");
+  } else if (mode === "undo" && game.canUndo) {
     for (let i = 0; i < game.numCol; i++) {
       for (let j = 0; j < game.numRow; j++) {
         newBoard[i][j] = game.undoBoard[i][j];
@@ -25,6 +23,7 @@ const setUndoBoard = (game, setGame, mode) => {
       ...prevGame,
       board: newBoard,
       player: prevGame.player === 1 ? 2 : 1,
+      canUndo: false,
     }));
   } else {
     return;

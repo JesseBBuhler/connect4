@@ -14,6 +14,7 @@ const GameSetUp = (numCol, numRow) => {
     numCol: numCol,
     numRow: numRow,
     undoBoard: undoBoard,
+    canUndo: false,
   };
   return game;
 };
