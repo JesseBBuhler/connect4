@@ -1,6 +1,8 @@
 import CheckForWinner from "./CheckForWinner";
+import setUndoBoard from "./setUndoBoard";
 
 const UpdateGame = (col, game, setGame) => {
+  setUndoBoard(game, setGame, "do");
   let row = game.numRow - 1;
 
   while (game.board[col][row] !== "unclaimed" && row >= 0) {
